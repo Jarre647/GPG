@@ -2,3 +2,5 @@
 SQL Repository/bin
 Web/bin
 Web/obj/*
+Web/CleintApp/dist/*
+Web/ClientApp/dist/
