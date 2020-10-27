@@ -10,7 +10,6 @@ C:\Users\jarre\Documents\GitHub\GPG\SQL Repository\bin\Debug\netcoreapp3.1\SQL R
 C:\Users\jarre\Documents\GitHub\GPG\SQL Repository\bin\Debug\netcoreapp3.1\SQL Repository.dll
 C:\Users\jarre\Documents\GitHub\GPG\SQL Repository\bin\Debug\netcoreapp3.1\SQL Repository.pdb
 C:\Users\jarre\Documents\GitHub\GPG\SQL Repository\bin\Debug\netcoreapp3.1\SQL Repository.Views.dll
-C:\Users\jarre\Documents\GitHub\GPG\SQL Repository\bin\Debug\netcoreapp3.1\SQL Repository.Views.pdb
 C:\Users\jarre\Documents\GitHub\GPG\SQL Repository\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Razor.Language.dll
 C:\Users\jarre\Documents\GitHub\GPG\SQL Repository\bin\Debug\netcoreapp3.1\Microsoft.Bcl.AsyncInterfaces.dll
 C:\Users\jarre\Documents\GitHub\GPG\SQL Repository\bin\Debug\netcoreapp3.1\Microsoft.Bcl.HashCode.dll
@@ -144,9 +143,10 @@ C:\Users\jarre\Documents\GitHub\GPG\SQL Repository\bin\Debug\netcoreapp3.1\runti
 C:\Users\jarre\Documents\GitHub\GPG\SQL Repository\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.0\System.Runtime.Caching.dll
 C:\Users\jarre\Documents\GitHub\GPG\SQL Repository\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
 C:\Users\jarre\Documents\GitHub\GPG\SQL Repository\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
-C:\Users\jarre\Documents\GitHub\GPG\SQL Repository\obj\Debug\netcoreapp3.1\SQL Repository.csprojAssemblyReference.cache
 C:\Users\jarre\Documents\GitHub\GPG\SQL Repository\obj\Debug\netcoreapp3.1\SQL Repository.AssemblyInfoInputs.cache
 C:\Users\jarre\Documents\GitHub\GPG\SQL Repository\obj\Debug\netcoreapp3.1\SQL Repository.AssemblyInfo.cs
+C:\Users\jarre\Documents\GitHub\GPG\SQL Repository\obj\Debug\netcoreapp3.1\SQL Repository.csproj.CoreCompileInputs.cache
+C:\Users\jarre\Documents\GitHub\GPG\SQL Repository\obj\Debug\netcoreapp3.1\SQL Repository.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\jarre\Documents\GitHub\GPG\SQL Repository\obj\Debug\netcoreapp3.1\SQL Repository.RazorTargetAssemblyInfo.cache
 C:\Users\jarre\Documents\GitHub\GPG\SQL Repository\obj\Debug\netcoreapp3.1\SQL Repository.csproj.CopyComplete
 C:\Users\jarre\Documents\GitHub\GPG\SQL Repository\obj\Debug\netcoreapp3.1\staticwebassets\SQL Repository.StaticWebAssets.Manifest.cache
@@ -154,5 +154,4 @@ C:\Users\jarre\Documents\GitHub\GPG\SQL Repository\obj\Debug\netcoreapp3.1\stati
 C:\Users\jarre\Documents\GitHub\GPG\SQL Repository\obj\Debug\netcoreapp3.1\SQL Repository.dll
 C:\Users\jarre\Documents\GitHub\GPG\SQL Repository\obj\Debug\netcoreapp3.1\SQL Repository.pdb
 C:\Users\jarre\Documents\GitHub\GPG\SQL Repository\obj\Debug\netcoreapp3.1\SQL Repository.genruntimeconfig.cache
-C:\Users\jarre\Documents\GitHub\GPG\SQL Repository\obj\Debug\netcoreapp3.1\SQL Repository.csproj.CoreCompileInputs.cache
-C:\Users\jarre\Documents\GitHub\GPG\SQL Repository\obj\Debug\netcoreapp3.1\SQL Repository.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\jarre\Documents\GitHub\GPG\SQL Repository\obj\Debug\netcoreapp3.1\SQL Repository.csprojAssemblyReference.cache

@@ -1,0 +1,3 @@
+C:\Users\jarre\Documents\GitHub\GPG\SQL Repository\obj\Debug\netcoreapp2.0\SQL Repository.AssemblyInfoInputs.cache
+C:\Users\jarre\Documents\GitHub\GPG\SQL Repository\obj\Debug\netcoreapp2.0\SQL Repository.AssemblyInfo.cs
+C:\Users\jarre\Documents\GitHub\GPG\SQL Repository\obj\Debug\netcoreapp2.0\SQL Repository.csproj.CoreCompileInputs.cache

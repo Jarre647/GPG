@@ -11,7 +11,7 @@ module.exports = (env) => {
         stats: { modules: false },
         context: __dirname,
         resolve: { extensions: [ '.js', '.ts' ] },
-        entry: { 'main': './ClientApp/boot.ts' },
+        entry: { 'main': './ClientApp/boot.js' },
         module: {
             rules: [
                 { test: /\.vue\.html$/, include: /ClientApp/, loader: 'vue-loader', options: { loaders: { js: 'awesome-typescript-loader?silent=true' } } },
@@ -31,10 +31,6 @@ module.exports = (env) => {
                 'process.env': {
                     NODE_ENV: JSON.stringify(isDevBuild ? 'development' : 'production')
                 }
-            }),
-            new webpack.DllReferencePlugin({
-                context: __dirname,
-                manifest: require('./wwwroot/dist/vendor-manifest.json')
             })
         ].concat(isDevBuild ? [
             // Plugins that apply in development builds only

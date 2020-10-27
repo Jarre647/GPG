@@ -7,12 +7,13 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SQL_Repository.Data;
 using SQL_Repository.Models;
+using SQL_Repository.Services.Contracts;
 
 namespace SQL_Repository.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AbusersController : ControllerBase
+    public class AbusersController : ControllerBase , IAbusersApi
     {
         private readonly SQL_RepositoryContext _context;
 
