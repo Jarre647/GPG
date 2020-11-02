@@ -1,47 +1,50 @@
-const path = require('path');
+'use strict';
+
 const webpack = require('webpack');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const CheckerPlugin = require('awesome-typescript-loader').CheckerPlugin;
-const bundleOutputDir = './wwwroot/dist';
+const path = require('path');
+const bundleFolder = "./wwwroot/";
+const srcFolder = "./Sripts/";
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
 
-module.exports = (env) => {
-    const isDevBuild = !(env && env.prod);
+module.exports = {
+    entry: {
+        site: __dirname + "/ClientApp/boot.js"
+    },
+    devtool: "source-map",
+    output: {
+        path: __dirname + '/wwwroot/dist', // Folder to store generated bundle
+        filename: "main.js",  // Name of generated bundle after build
+        publicPath: '/' // public URL of the output directory when referenced in a browser
+    },
 
-    return [{
-        stats: { modules: false },
-        context: __dirname,
-        resolve: { extensions: [ '.js', '.ts' ] },
-        entry: { 'main': './ClientApp/boot.js' },
-        module: {
-            rules: [
-                { test: /\.vue\.html$/, include: /ClientApp/, loader: 'vue-loader', options: { loaders: { js: 'awesome-typescript-loader?silent=true' } } },
-                { test: /\.ts$/, include: /ClientApp/, use: 'awesome-typescript-loader?silent=true' },
-                { test: /\.css$/, use: isDevBuild ? [ 'style-loader', 'css-loader' ] : ExtractTextPlugin.extract({ use: 'css-loader?minimize' }) },
-                { test: /\.(png|jpg|jpeg|gif|svg)$/, use: 'url-loader?limit=25000' }
-            ]
-        },
-        output: {
-            path: path.join(__dirname, bundleOutputDir),
-            filename: '[name].js',
-            publicPath: 'dist/'
-        },
-        plugins: [
-            new CheckerPlugin(),
-            new webpack.DefinePlugin({
-                'process.env': {
-                    NODE_ENV: JSON.stringify(isDevBuild ? 'development' : 'production')
-                }
-            })
-        ].concat(isDevBuild ? [
-            // Plugins that apply in development builds only
-            new webpack.SourceMapDevToolPlugin({
-                filename: '[file].map', // Remove this line if you prefer inline source maps
-                moduleFilenameTemplate: path.relative(bundleOutputDir, '[resourcePath]') // Point sourcemap entries to the original file locations on disk
-            })
-        ] : [
-            // Plugins that apply in production builds only
-            new webpack.optimize.UglifyJsPlugin(),
-            new ExtractTextPlugin('site.css')
-        ])
-    }];
+    module: {
+        rules: [
+            {
+                test: /\.vue$/,
+                exclude: /node_modules/,
+                use: 'vue-loader'
+            },
+            {
+                test: /\.js$/,
+                exclude: /node_modules/,
+                use: 'babel-loader'
+            },
+            {
+                test: /\.css$/,
+                exclude: /node_modules/,
+                use: [
+                    'style-loader',
+                    'css-loader'
+                ]
+            }
+        ]
+    },
+    plugins: [
+        new VueLoaderPlugin()
+    ],
+    resolve: {
+        alias: {
+            vue: path.resolve(__dirname, './node_modules/vue/dist/vue.js')
+        }
+    }
 };
