@@ -1,6 +1,4 @@
-
 SQL Repository/bin
-Web/bin
-Web/obj/*
-Web/CleintApp/dist/*
-Web/ClientApp/dist/
+/.vs/SQL Repository/
+SQL Repository/Debug/*
+SQL Repository/obj
