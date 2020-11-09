@@ -18,8 +18,8 @@ namespace SQL_Repository.Modules
         protected override void Load(ContainerBuilder builder)
         {
             builder.RegisterModule(
-                new AutofacModule(_appSettings.ConnectionsStrings.SQL_RepositoryContext));
-            builder.RegisterType<AbuserApi>().As<IAbusersApi>();
+                new AutofacModule(_appSettings.ConnectionsStrings.SqlRepositoryContext));
+            builder.RegisterType<GrudgeApi>().As<IGrudgesApi>();
         }
     }
 }

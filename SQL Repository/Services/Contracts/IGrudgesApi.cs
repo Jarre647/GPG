@@ -5,8 +5,10 @@ using SQL_Repository.Models;
 
 namespace SQL_Repository.Services.Contracts
 {
-    public interface IAbusersApi
+    public interface IGrudgesApi
     {
-        Task<ActionResult<IEnumerable<Abuser>>> GetAbuser();
+        Task<List<Grudge>> GetGrudges();
+
+        Task<ActionResult<Grudge>> GetGrudgeById(int id);
     }
 }

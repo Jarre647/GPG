@@ -1,23 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using Microsoft.EntityFrameworkCore;
-using SQL_Repository.Controllers;
-using SQL_Repository.Data;
 using SQL_Repository.Middleware;
 using SQL_Repository.Modules;
 using SQL_Repository.Repositories;
-using SQL_Repository.Services;
-using SQL_Repository.Services.Contracts;
+using SQL_Repository.Data;
 
 namespace SQL_Repository
 {
@@ -34,34 +25,42 @@ namespace SQL_Repository
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-
-            services.AddDbContext<SQL_RepositoryContext>(options =>
-                    options.UseSqlServer(Configuration.GetConnectionString("SQL_RepositoryContext")));
             services.RegisterServices();
-
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+            services.AddDbContext<SqlRepositoryContext>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("SqlRepositoryContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
+            if (env.IsDevelopment()) app.UseDeveloperExceptionPage();
 
             app.UseHttpsRedirection();
+
+            UpdateDatabase(app);
 
             app.UseRouting();
 
             app.UseAuthorization();
-
+            
             app.UseMiddleware<ErrorHandlingMiddleware>();
 
-            app.UseEndpoints(endpoints =>
+            app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
+        }
+
+        private static void UpdateDatabase(IApplicationBuilder app)
+        {
+            using (var serviceScope = app.ApplicationServices
+                .GetRequiredService<IServiceScopeFactory>()
+                .CreateScope())
             {
-                endpoints.MapControllers();
-            });
+                using (var context = serviceScope.ServiceProvider.GetService<SqlRepositoryContext>())
+                {
+                    context.Database.Migrate();
+                }
+            }
         }
     }
 }

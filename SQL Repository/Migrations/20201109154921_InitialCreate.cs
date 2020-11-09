@@ -8,7 +8,7 @@ namespace SQL_Repository.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Abuser",
+                name: "Grudge",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -19,14 +19,14 @@ namespace SQL_Repository.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Abuser", x => x.Id);
+                    table.PrimaryKey("PK_Grudge", x => x.Id);
                 });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Abuser");
+                name: "Grudge");
         }
     }
 }

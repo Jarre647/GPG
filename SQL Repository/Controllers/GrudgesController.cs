@@ -2,59 +2,64 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SQL_Repository.Data;
 using SQL_Repository.Models;
+using SQL_Repository.Repositories;
 using SQL_Repository.Services.Contracts;
 
 namespace SQL_Repository.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AbusersController : ControllerBase , IAbusersApi
+    public class GrudgesController : ControllerBase
     {
-        private readonly SQL_RepositoryContext _context;
+        private readonly SqlRepositoryContext _context;
+        private readonly IGrudgesApi _grudgesApi;
 
-        public AbusersController(SQL_RepositoryContext context)
+        public GrudgesController(
+            SqlRepositoryContext context,
+            IGrudgesApi grudgesApi)
         {
             _context = context;
+            _grudgesApi = grudgesApi;
         }
 
-        // GET: api/Abusers
+        // GET: api/Grudges
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Abuser>>> GetAbuser()
+        public async Task<List<Grudge>> GetAbuser()
         {
-            return await _context.Abuser.ToListAsync();
+            return await _grudgesApi.GetGrudges();
         }
 
-        // GET: api/Abusers/5
+        // GET: api/Grudges/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Abuser>> GetAbuser(int id)
+        public async Task<ActionResult<Grudge>> GetGrudgeById(int id)
         {
-            var abuser = await _context.Abuser.FindAsync(id);
+            var grudge = await _grudgesApi.GetGrudgeById(id);
 
-            if (abuser == null)
+            if (grudge == null)
             {
                 return NotFound();
             }
 
-            return abuser;
+            return Ok(grudge);
         }
 
-        // PUT: api/Abusers/5
+        // PUT: api/Grudges/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutAbuser(int id, Abuser abuser)
+        public async Task<IActionResult> PutAbuser(int id, Grudge grudge)
         {
-            if (id != abuser.Id)
+            if (id != grudge.Id)
             {
                 return BadRequest();
             }
 
-            _context.Entry(abuser).State = EntityState.Modified;
+            _context.Entry(grudge).State = EntityState.Modified;
 
             try
             {
@@ -75,29 +80,30 @@ namespace SQL_Repository.Controllers
             return NoContent();
         }
 
-        // POST: api/Abusers
+        // POST: api/Grudges
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        public async Task<ActionResult<Abuser>> PostAbuser(Abuser abuser)
+        public async Task<ActionResult<Grudge>> PostAbuser(Grudge grudge)
         {
-            _context.Abuser.Add(abuser);
+            grudge.Date = DateTime.Now;
+            _context.Grudge.Add(grudge);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetAbuser", new { id = abuser.Id }, abuser);
+            return CreatedAtAction("GetAbuser", new { id = grudge.Id }, grudge);
         }
 
-        // DELETE: api/Abusers/5
+        // DELETE: api/Grudges/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<Abuser>> DeleteAbuser(int id)
+        public async Task<ActionResult<Grudge>> DeleteAbuser(int id)
         {
-            var abuser = await _context.Abuser.FindAsync(id);
+            var abuser = await _context.Grudge.FindAsync(id);
             if (abuser == null)
             {
                 return NotFound();
             }
 
-            _context.Abuser.Remove(abuser);
+            _context.Grudge.Remove(abuser);
             await _context.SaveChangesAsync();
 
             return abuser;
@@ -105,7 +111,7 @@ namespace SQL_Repository.Controllers
 
         private bool AbuserExists(int id)
         {
-            return _context.Abuser.Any(e => e.Id == id);
+            return _context.Grudge.Any(e => e.Id == id);
         }
     }
 }

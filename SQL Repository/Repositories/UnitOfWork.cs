@@ -16,7 +16,7 @@ namespace SQL_Repository.Repositories
 
         private bool _disposed;
 
-        public UnitOfWork(SQL_RepositoryContext context)
+        public UnitOfWork(SqlRepositoryContext context)
         {
             _context = context;
         }

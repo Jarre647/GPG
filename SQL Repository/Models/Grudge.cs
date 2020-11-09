@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace SQL_Repository.Models
 {
-    public class Abuser
+    public class Grudge
     {
         public int Id { get; set; }
         public string AbuserName { get; set; }

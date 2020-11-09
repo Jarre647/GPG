@@ -13,7 +13,7 @@ namespace SQL_Repository.Modules
     {
         public static void RegisterServices(this IServiceCollection services)
         {
-            services.AddScoped<IAbusersApi, AbuserApi>();
+            services.AddScoped<IGrudgesApi, GrudgeApi>();
         }
     }
 }
