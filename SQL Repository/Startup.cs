@@ -13,7 +13,9 @@ using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
 using SQL_Repository.Controllers;
 using SQL_Repository.Data;
+using SQL_Repository.Middleware;
 using SQL_Repository.Modules;
+using SQL_Repository.Repositories;
 using SQL_Repository.Services;
 using SQL_Repository.Services.Contracts;
 
@@ -36,6 +38,8 @@ namespace SQL_Repository
             services.AddDbContext<SQL_RepositoryContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("SQL_RepositoryContext")));
             services.RegisterServices();
+
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -51,6 +55,8 @@ namespace SQL_Repository
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseMiddleware<ErrorHandlingMiddleware>();
 
             app.UseEndpoints(endpoints =>
             {
