@@ -7,8 +7,14 @@ namespace SQL_Repository.Services.Contracts
 {
     public interface IGrudgesApi
     {
-        Task<List<Grudge>> GetGrudges();
+        Task<List<Grudge>> GetGrudgesAsync();
 
-        Task<ActionResult<Grudge>> GetGrudgeById(int id);
+        Task<ActionResult<Grudge>> GetGrudgeByIdAsync(int id);
+
+        Task PutGrudgeAsync(Grudge grudge);
+
+        Task PostGrudgeAsync(Grudge grudge);
+
+        Task DeleteGrudgeAsync(int Id);
     }
 }
