@@ -23,10 +23,10 @@ namespace SQL_Repository.Repositories
             builder.Register(c =>
                 {
                     var config = c.Resolve<IConfiguration>();
-                    var options = new DbContextOptionsBuilder<SQL_RepositoryContext>();
+                    var options = new DbContextOptionsBuilder<SqlRepositoryContext>();
                     options.UseSqlServer(config.GetValue<string>("ConnectionString"));
 
-                    return new SQL_RepositoryContext(options.Options);
+                    return new SqlRepositoryContext(options.Options);
                 })
                 .AsSelf();
 

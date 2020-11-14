@@ -9,8 +9,8 @@ using SQL_Repository.Data;
 
 namespace SQL_Repository.Migrations
 {
-    [DbContext(typeof(SQL_RepositoryContext))]
-    [Migration("20201024043344_InitialCreate")]
+    [DbContext(typeof(SqlRepositoryContext))]
+    [Migration("20201109154921_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -21,7 +21,7 @@ namespace SQL_Repository.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("SQL_Repository.Models.Abuser", b =>
+            modelBuilder.Entity("SQL_Repository.Models.Grudge", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -39,7 +39,7 @@ namespace SQL_Repository.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Abuser");
+                    b.ToTable("Grudge");
                 });
 #pragma warning restore 612, 618
         }

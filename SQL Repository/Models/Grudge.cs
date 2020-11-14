@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace SQL_Repository.Models
 {
-    public class Abuser
+    public class Grudge
     {
+        [Key]
         public int Id { get; set; }
         public string AbuserName { get; set; }
         public string Reason { get; set; }
