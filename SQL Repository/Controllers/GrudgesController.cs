@@ -68,7 +68,7 @@ namespace SQL_Repository.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        public async Task<ActionResult<Grudge>> PostAbuser(Grudge grudge)
+        public async Task<ActionResult<Grudge>> PostGrudge(Grudge grudge)
         {
             try
             {
@@ -85,7 +85,7 @@ namespace SQL_Repository.Controllers
 
         // DELETE: api/Grudges/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<Grudge>> DeleteAbuser(int id)
+        public async Task<ActionResult<Grudge>> DeleteGrudge(int id)
         {
             try
             {

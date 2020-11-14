@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿
+using AutoMapper;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Migrations;
@@ -9,6 +11,7 @@ using SQL_Repository.Middleware;
 using SQL_Repository.Modules;
 using SQL_Repository.Repositories;
 using SQL_Repository.Data;
+using SQL_Repository.Mapping;
 
 namespace SQL_Repository
 {
@@ -24,6 +27,13 @@ namespace SQL_Repository
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            var mappingConfig = new MapperConfiguration(mc =>
+            {
+                mc.AddProfile(new MappingProfile());
+            });
+            IMapper mapper = mappingConfig.CreateMapper();
+            services.AddSingleton(mapper);
+
             services.AddControllers();
             services.RegisterServices();
             services.AddScoped<IUnitOfWork, UnitOfWork>();

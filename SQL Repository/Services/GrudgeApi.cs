@@ -39,6 +39,8 @@ namespace SQL_Repository.Services
             var getRepository = _unitOfWork.GetRepository<Grudge>();
             var entity = _mapper.Map<Grudge>(grudge);
             getRepository.Update(entity);
+            await _unitOfWork.CommitAsync();
+
         }
 
         public async Task PostGrudgeAsync(Grudge grudge)
@@ -46,11 +48,13 @@ namespace SQL_Repository.Services
             var getRepository = _unitOfWork.GetRepository<Grudge>();
             var entity = _mapper.Map<Grudge>(grudge);
             getRepository.Add(entity);
+            await _unitOfWork.CommitAsync();
         }
 
         public async Task DeleteGrudgeAsync(int Id)
         {
             _unitOfWork.GetRepository<Grudge>().Remove(Id);
+            await _unitOfWork.CommitAsync();
         }
     }
 }
