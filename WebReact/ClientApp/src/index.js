@@ -1,13 +1,37 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { render } from 'react-dom';
-const node = document.getElementById('root');
+import PropTypes from "prop-types";
 
-// Create browser history to use in the Redux store
+class Counter extends React.Component {
+    static propTypes = {
+        incrementBy: PropTypes.number,
+        onIncremen: PropTypes.func.isRequired
+    };
+    static defaultProps = {
+      incrementBy: 1
+    };
 
-// Get the application-wide store instance, prepopulating with state from the server where available.
-// const initialState = window.initialReduxState;
-// const store = configureStore(history, initialState);
-const root = React.createElement('div',
-        {},
-        React.createElement('h1', {}, "Hellowm world!"));
-render (root, node)
+    constructor(props) {
+      super(props);
+      this.state = {
+        count: 0
+      };
+      this.onButtonClick = this.onButtonClick.bind(this);
+    }
+    onButtonClick() {
+      this.setState(function(prevState, props) {
+        return { count: prevState.count + props.incrementBy};
+      });
+    }
+    render() {
+      return (
+        <div>
+          <h1>
+            {this.state.count}
+            <button onClick={this.onButtonClick}>++</button>
+          </h1>
+        </div>
+      )
+    }
+}
+render (<Counter incrementBy={1}/>, document.getElementById('root'))
