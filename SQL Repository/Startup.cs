@@ -19,6 +19,8 @@ namespace SQL_Repository
 {
     public class Startup
     {
+        readonly string MyAllowSpecificOrigins = "https://localhost:44392";
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -29,6 +31,15 @@ namespace SQL_Repository
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options =>
+            {
+                options.AddPolicy(name: MyAllowSpecificOrigins,
+                    builder =>
+                    {
+                        builder.WithOrigins("https://localhost:44392");
+                    });
+            });
+
             var mappingConfig = new MapperConfiguration(mc =>
             {
                 mc.AddProfile(new MappingProfile());
@@ -54,6 +65,8 @@ namespace SQL_Repository
             UpdateDatabase(app);
 
             app.UseRouting();
+
+            app.UseCors(MyAllowSpecificOrigins);
 
             app.UseAuthorization();
             

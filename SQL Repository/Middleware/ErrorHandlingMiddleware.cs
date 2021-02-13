@@ -54,6 +54,7 @@ namespace SQL_Repository.Middleware
 
             context.Response.ContentType = "application/json";
             context.Response.StatusCode = (int) code;
+            Logger.ErrorHandling(ex, context.ToString());
             return context.Response.WriteAsync(body);
         }
     }
