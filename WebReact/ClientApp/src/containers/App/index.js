@@ -2,6 +2,7 @@
 import PropTypes from 'prop-types';
 import ListGrudge from '../../components/ListGrudge'
 import CreateGrudge from '../../components/CreateGrudge'
+import Map from '../../components/Map'
 import axios from 'axios';
 
 function App(){
@@ -19,6 +20,7 @@ function App(){
             {grudges.map((grudge) => <ListGrudge abuserName={grudge.abuserName}
                                                  reason={grudge.reason}/> ) }     
             <CreateGrudge/>  
+            <Map/>
         </Fragment>
     )
 }
