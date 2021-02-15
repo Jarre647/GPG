@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
@@ -46,6 +47,7 @@ namespace SQL_Repository.Services
         public async Task PostGrudgeAsync(Grudge grudge)
         {
             var getRepository = _unitOfWork.GetRepository<Grudge>();
+            grudge.Date = DateTime.Now;
             var entity = _mapper.Map<Grudge>(grudge);
             getRepository.Add(entity);
             await _unitOfWork.CommitAsync();

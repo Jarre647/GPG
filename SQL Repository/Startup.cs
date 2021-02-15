@@ -36,7 +36,9 @@ namespace SQL_Repository
                 options.AddPolicy(name: MyAllowSpecificOrigins,
                     builder =>
                     {
-                        builder.WithOrigins("https://localhost:44392");
+                        builder.WithOrigins("https://localhost:44392")
+                            .AllowAnyHeader()
+                            .AllowAnyMethod();
                     });
             });
 

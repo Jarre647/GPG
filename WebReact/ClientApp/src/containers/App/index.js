@@ -1,6 +1,7 @@
 ﻿import React, { Fragment, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import ListGrudge from '../../components/ListGrudge'
+import CreateGrudge from '../../components/CreateGrudge'
 import axios from 'axios';
 
 function App(){
@@ -16,7 +17,8 @@ function App(){
             <p>Поиск по имени</p>
             <input></input>
             {grudges.map((grudge) => <ListGrudge abuserName={grudge.abuserName}
-                                                 reason={grudge.reason}/> ) }       
+                                                 reason={grudge.reason}/> ) }     
+            <CreateGrudge/>  
         </Fragment>
     )
 }
