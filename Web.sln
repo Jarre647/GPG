@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Web", "Web\Web.csproj", "{9
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SQL Repository", "SQL Repository\SQL Repository.csproj", "{5465EFDD-C156-4D34-ABAD-045DACE829D5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebReact", "WebReact\WebReact.csproj", "{B3897106-0F87-4E9C-B0BA-098BAF147E52}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebReact", "WebReact\WebReact.csproj", "{B3897106-0F87-4E9C-B0BA-098BAF147E52}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

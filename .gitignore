@@ -2,3 +2,10 @@ SQL Repository/bin
 /.vs/SQL Repository/
 SQL Repository/Debug/*
 SQL Repository/obj
+packages/*
+TelegramBotV2/bin/*
+TelegramBotV2/bin/Debug/*
+TelegramBotV2/wwwroot/lib/
+/TelegramBotV2/wwwroot/lib
+/TelegramBotV2/bin
+/TelegramBotV2/obj
