@@ -23,7 +23,6 @@ namespace TelegramBotV2
         {
             services.AddScoped<IUpdateService, UpdateService>();
             services.AddSingleton<IBotService, BotService>();
-            services.AddScoped<IGrudgesApi, GrudgeApi>();
             services.Configure<BotConfiguration>(Configuration.GetSection("BotConfiguration"));
             services
                 .AddControllers()

@@ -19,7 +19,7 @@ namespace SQL_Repository
 {
     public class Startup
     {
-        readonly string MyAllowSpecificOrigins = "https://localhost:44369";
+        readonly string MyAllowSpecificOrigins = "https://localhost:44392";
 
         public Startup(IConfiguration configuration)
         {
@@ -36,7 +36,7 @@ namespace SQL_Repository
                 options.AddPolicy(name: MyAllowSpecificOrigins,
                     builder =>
                     {
-                        builder.WithOrigins("https://localhost:44369")
+                        builder.WithOrigins("https://localhost:44392")
                             .AllowAnyHeader()
                             .AllowAnyMethod();
                     });
