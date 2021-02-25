@@ -2,7 +2,7 @@
 
 namespace HttpClientGenerator
 {
-    public class Class1
+    public class HttpClientGenerator
     {
     }
 }
