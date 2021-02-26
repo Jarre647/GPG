@@ -9,7 +9,7 @@ function App(){
     const [grudges, setGrudges] = useState([]);
     useEffect(() => {
         axios
-        .get("https://localhost:44369/api/grudges")
+            .get("https://localhost:5001/api/grudges")
         .then(res => setGrudges(res.data))
     }, []);
     

@@ -1,20 +1,20 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using SQL_Repository.Models;
+using SQLRepository.Client.Models;
 
 namespace SQL_Repository.Services.Contracts
 {
     public interface IGrudgesApi
     {
-        Task<List<Grudge>> GetGrudgesAsync();
+        Task<List<GrudgeModel>> GetGrudgesAsync();
 
-        Task<ActionResult<Grudge>> GetGrudgeByIdAsync(int id);
+        Task<ActionResult<GrudgeModel>> GetGrudgeByIdAsync(int id);
 
-        Task PutGrudgeAsync(Grudge grudge);
+        Task PutGrudgeAsync(GrudgeModel grudge);
 
-        Task PostGrudgeAsync(Grudge grudge);
+        Task PostGrudgeAsync(GrudgeModel grudge);
 
-        Task DeleteGrudgeAsync(int Id);
+        Task DeleteGrudgeAsync(int id);
     }
 }

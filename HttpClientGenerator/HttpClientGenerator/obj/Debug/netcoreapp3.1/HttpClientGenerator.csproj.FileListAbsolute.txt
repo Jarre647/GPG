@@ -1,9 +1,0 @@
-C:\Repos\GPG\HttpClientGenerator\HttpClientGenerator\bin\Debug\netcoreapp3.1\HttpClientGenerator.deps.json
-C:\Repos\GPG\HttpClientGenerator\HttpClientGenerator\bin\Debug\netcoreapp3.1\HttpClientGenerator.dll
-C:\Repos\GPG\HttpClientGenerator\HttpClientGenerator\bin\Debug\netcoreapp3.1\HttpClientGenerator.pdb
-C:\Repos\GPG\HttpClientGenerator\HttpClientGenerator\obj\Debug\netcoreapp3.1\HttpClientGenerator.csprojAssemblyReference.cache
-C:\Repos\GPG\HttpClientGenerator\HttpClientGenerator\obj\Debug\netcoreapp3.1\HttpClientGenerator.AssemblyInfoInputs.cache
-C:\Repos\GPG\HttpClientGenerator\HttpClientGenerator\obj\Debug\netcoreapp3.1\HttpClientGenerator.AssemblyInfo.cs
-C:\Repos\GPG\HttpClientGenerator\HttpClientGenerator\obj\Debug\netcoreapp3.1\HttpClientGenerator.csproj.CoreCompileInputs.cache
-C:\Repos\GPG\HttpClientGenerator\HttpClientGenerator\obj\Debug\netcoreapp3.1\HttpClientGenerator.dll
-C:\Repos\GPG\HttpClientGenerator\HttpClientGenerator\obj\Debug\netcoreapp3.1\HttpClientGenerator.pdb

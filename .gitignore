@@ -13,3 +13,5 @@ TelegramBotV2/wwwroot/lib/
 /TelegramBot/
 /SQLRepository.Client/obj/
 /SQLRepository.Client/bin/
+/HttpClientGenerator/HttpClientGenerator/obj/
+/HttpClientGenerator/HttpClientGenerator/bin/

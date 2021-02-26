@@ -4,7 +4,9 @@ using System.Text;
 
 namespace SQLRepository.Client
 {
-    class SQLRepositoryClientSettings
+    public class SQLRepositoryClientSettings
     {
+        /// <summary>URL сервиса</summary>
+        public string ServiceUrl { get; set; }
     }
 }

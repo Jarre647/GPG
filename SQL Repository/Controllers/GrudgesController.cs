@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using SQL_Repository.Models;
 using SQL_Repository.Services.Contracts;
+using SQLRepository.Client.Models;
 
 namespace SQL_Repository.Controllers
 {
@@ -22,14 +22,14 @@ namespace SQL_Repository.Controllers
 
         // GET: api/Grudges
         [HttpGet]
-        public async Task<List<Grudge>> GetAbuser()
+        public async Task<List<GrudgeModel>> GetAbuserAsync()
         {
             return await _grudgesApi.GetGrudgesAsync();
         }
 
         // GET: api/Grudges/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Grudge>> GetGrudgeById(int id)
+        public async Task<ActionResult<GrudgeModel>> GetGrudgeByIdAsync(int id)
         {
             var grudge = await _grudgesApi.GetGrudgeByIdAsync(id);
 
@@ -45,7 +45,7 @@ namespace SQL_Repository.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutGrudge(Grudge grudge)
+        public async Task<IActionResult> PutGrudgeAsync(GrudgeModel grudge)
         {
             if (grudge.Id != 0) //todo настроить нормально обработку ошибок
             {
@@ -68,7 +68,7 @@ namespace SQL_Repository.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        public async Task<ActionResult<Grudge>> PostGrudge(Grudge grudge)
+        public async Task<ActionResult<GrudgeModel>> PostGrudgeAsync(GrudgeModel grudge)
         {
             try
             {
@@ -85,7 +85,7 @@ namespace SQL_Repository.Controllers
 
         // DELETE: api/Grudges/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<Grudge>> DeleteGrudge(int id)
+        public async Task<ActionResult<GrudgeModel>> DeleteGrudge(int id)
         {
             try
             {

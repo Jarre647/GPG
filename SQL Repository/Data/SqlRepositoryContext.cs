@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using SQL_Repository.Models;
+using SQLRepository.Client.Models;
 
 namespace SQL_Repository.Data
 {
@@ -10,6 +10,6 @@ namespace SQL_Repository.Data
         {
         }
 
-        public DbSet<Grudge> Grudge { get; set; }
+        public DbSet<GrudgeModel> Grudge { get; set; }
     }
 }

@@ -6,11 +6,18 @@ using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using SQLRepository.Client;
+using SQLRepository.Client.Contracts;
+using WebReact.Mappings;
+using WebReact.Services;
+using WebReact.Services.Contracts;
+using WebReact.Settings;
 
 namespace WebReact
 {
     public class Startup
     {
+        public static AppSettings AppSettings { get; set; }
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -21,8 +28,13 @@ namespace WebReact
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            var settings = Configuration.Get<AppSettings>();
+            AppSettings = settings;
+            services.AddTransient(provider => settings);
+            services.RegisterSQLRepositoryClient(settings.SQLRepositoryClientSettings, builder => builder);
             services.AddControllersWithViews();
-
+            services.AddScoped<IGrudgeService, GrudgeService>();
+            services.AddAutoMapper(typeof(MappingEntityConfig));
             // In production, the React files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
             {

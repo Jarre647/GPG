@@ -1,10 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
+using Refit;
+using SQLRepository.Client.Models;
+
 
 namespace SQLRepository.Client.Contracts
 {
-    class IGrudgeApi
+    public interface IGrudgeApi
     {
+        [Get("/grudges")]
+        Task<IReadOnlyList<GrudgeModel>> GetAbuserAsync();
     }
 }
