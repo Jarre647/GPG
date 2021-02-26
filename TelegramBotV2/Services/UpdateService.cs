@@ -5,10 +5,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using SQL_Repository.Services.Contracts;
 using Telegram.Bot.Types;
 using Telegram.Bot.Types.Enums;
-using TelegramBotV2.Models;
 
 namespace TelegramBotV2.Services
 {
