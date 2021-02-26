@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System;
 using SQL_Repository.Models;
+using SQLRepository.Client.Models;
 
 namespace SQL_Repository.Mapping
 {
@@ -9,7 +10,7 @@ namespace SQL_Repository.Mapping
     {
         public MappingProfile()
         {
-            CreateMap<GrudgeModel, Grudge>();
+            CreateMap<GrudgeModel, GrudgeModel>();
         }
     }
 }

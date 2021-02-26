@@ -19,7 +19,7 @@ namespace SQL_Repository.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("SQL_Repository.Models.Grudge", b =>
+            modelBuilder.Entity("SQLRepository.Client.Models.GrudgeModel", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()

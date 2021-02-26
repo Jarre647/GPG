@@ -12,11 +12,15 @@ using SQL_Repository.Modules;
 using SQL_Repository.Repositories;
 using SQL_Repository.Data;
 using SQL_Repository.Mapping;
+using SQL_Repository.Services;
+using SQL_Repository.Services.Contracts;
 
 namespace SQL_Repository
 {
     public class Startup
     {
+        readonly string MyAllowSpecificOrigins = "https://localhost:44392";
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -27,6 +31,17 @@ namespace SQL_Repository
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options =>
+            {
+                options.AddPolicy(name: MyAllowSpecificOrigins,
+                    builder =>
+                    {
+                        builder.WithOrigins("https://localhost:44392")
+                            .AllowAnyHeader()
+                            .AllowAnyMethod();
+                    });
+            });
+
             var mappingConfig = new MapperConfiguration(mc =>
             {
                 mc.AddProfile(new MappingProfile());
@@ -35,8 +50,8 @@ namespace SQL_Repository
             services.AddSingleton(mapper);
 
             services.AddControllers();
-            services.RegisterServices();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<IGrudgesApi, GrudgeApi>();
 
             services.AddDbContext<SqlRepositoryContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("SqlRepositoryContext")));
@@ -52,6 +67,8 @@ namespace SQL_Repository
             UpdateDatabase(app);
 
             app.UseRouting();
+
+            app.UseCors(MyAllowSpecificOrigins);
 
             app.UseAuthorization();
             

@@ -1,40 +1,35 @@
 ﻿<template>
-    <div style="transform-origin: center top 0px;">
-        <div data-app="true" class="v-application v-application--is-ltr theme--light" id="inspire" file="wireframes/inbox">
-            <div class="v-application--wrap">
-                <div class="v-system-bar v-system-bar--fixed theme--light" style="height: 24px;">
-                    <div class="spacer">
-                    </div>
-                    <i aria-hidden="true" class="v-icon notranslate mdi mdi-square theme--light">
-                    </i>
-                    <i aria-hidden="true" class="v-icon notranslate mdi mdi-circle theme--light">
-                    </i>
-                    <i aria-hidden="true" class="v-icon notranslate mdi mdi-triangle theme--light">
-                    </i>
-                </div>
-                <nav-menu/>
+    <div> <!--тут можно тоже использовать фрагмент, но надо его импортировать-->
+        <p>Поиск по имени</p>
+        <input />
+        <list-grudge v-for="item in grudge"
+                     :abuserName="item.abuserName"
+                     :reason="item.reason">
 
-            </div>
-        </div>
+        </list-grudge>
     </div>
 </template>
 
 <script>
-    import Main from "./Components/Main.vue"
-    import NavMenu from "./Components/NavMenu.vue"
+    import createGrudge from "./Components/CreateGrudge.vue"
+    import listGrudge from "./Components/ListGrudge.vue"
+
     export default {
-        data: () => ({
-            cards: ['Today', 'Yesterday'],
-            drawer: null,
-            links: [
-                ['mdi-inbox-arrow-down', 'Inbox'],
-                ['mdi-send', 'Send'],
-                ['mdi-delete', 'Trash'],
-                ['mdi-alert-octagon', 'Spam'],
-            ],
-        }),
+        data: function () {
+            return {
+                grudges: Object
+            }
+        },
         components: {
-            "nav-menu": NavMenu
+            "create-grudge": createGrudge,
+            "list-grudge": listGrudge
+        },
+        beforeCreate: async function () {
+            await axios
+                .get("http://localhost:44369/api/grudges")
+                .then(response => {
+                    this.grudges = response.data
+                });
         }
     }
 </script>
