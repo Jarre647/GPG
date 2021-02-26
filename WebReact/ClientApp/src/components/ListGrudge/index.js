@@ -1,8 +1,9 @@
 import React from 'react';
-
+import "./styles.css"
 function ListGrudge(props) {
     return (
-        <div>       
+        <div class="first__abuser">   
+            
             <div>
                 {props.abuserName}
             </div>
