@@ -1,7 +1,7 @@
-SQL Repository/bin
+/SQLRepository/bin
 /.vs/SQL Repository/
-SQL Repository/Debug/*
-SQL Repository/obj
+/SQLRepository/Debug/*
+/SQLRepository/obj
 packages/*
 TelegramBotV2/bin/*
 TelegramBotV2/bin/Debug/*
