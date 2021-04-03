@@ -9,5 +9,8 @@ namespace SQLRepository.Client.Contracts
     {
         [Get("/grudges")]
         Task<IReadOnlyList<GrudgeModel>> GetAbuserAsync();
+
+        [Post("/grudges")]
+        Task PutGrudgeAsync(GrudgeModel grudge);
     }
 }
