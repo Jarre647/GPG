@@ -1,13 +1,8 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using SQLRepository.Data;
@@ -21,7 +16,7 @@ namespace SQLRepository
 {
     public class Startup
     {
-        readonly string MyAllowSpecificOrigins = "http://6d6cb7d9810f.ngrok.io";
+        readonly string MyAllowSpecificOrigins = "https://localhost:5001";
 
         public Startup(IConfiguration configuration)
         {
@@ -38,7 +33,7 @@ namespace SQLRepository
                 options.AddPolicy(name: MyAllowSpecificOrigins,
                     builder =>
                     {
-                        builder.WithOrigins("http://6d6cb7d9810f.ngrok.io")
+                        builder.WithOrigins(MyAllowSpecificOrigins)
                             .AllowAnyHeader()
                             .AllowAnyMethod();
                     });
