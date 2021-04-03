@@ -15,6 +15,9 @@ RUN apt-get update \
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 WORKDIR /src
 COPY ["WebVue/WebVue.csproj", "WebVue/"]
+COPY package*.json ./
+RUN npm install
+RUN npm run build
 RUN dotnet restore "WebVue/WebVue.csproj"
 COPY . .
 WORKDIR "/src/WebVue"
