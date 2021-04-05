@@ -7,14 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="HttpClientGenerator" Version="1.0.1" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.13" />
+    <PackageReference Include="SQLRepository.Client" Version="1.0.3" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
     <PackageReference Include="VueCliMiddleware" Version="5.0.0" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="ClientApp\src\assets\" />
-    <Folder Include="Controllers\" />
   </ItemGroup>
 
 </Project>

@@ -16,4 +16,6 @@ TelegramBotV2/wwwroot/lib/
 /HttpClientGenerator/HttpClientGenerator/obj/
 /HttpClientGenerator/HttpClientGenerator/bin/
 /WebVue/obj/
+/WebVue/bin/
+/WebVue/ClientApp/dist/
 /WebVue/ClientApp/node_modules/
