@@ -16,7 +16,7 @@ namespace SQLRepository
 {
     public class Startup
     {
-        readonly string MyAllowSpecificOrigins = "https://localhost:5001";
+        readonly string MyAllowSpecificOrigins = "http://localhost:5000";
 
         public Startup(IConfiguration configuration)
         {

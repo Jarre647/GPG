@@ -27,14 +27,10 @@ namespace WebVue
         {
             var settings = Configuration.Get<AppSettings>();
             AppSettings = settings;
-
+            var test = Environment.IsDevelopment();
             services.RegisterSQLRepositoryClient(settings.SqlRepositoryClientSettings, 
                 builder => Environment.IsDevelopment() ? builder : builder.WithAccessTokenAuthorization(services));
             services.AddControllers();
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebVue", Version = "v1" });
-            });
             services.AddSpaStaticFiles(configuration =>
             {
                 configuration.RootPath = "ClientApp";
@@ -47,8 +43,6 @@ namespace WebVue
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "WebVue v1"));
             }
 
             app.UseHttpsRedirection();
