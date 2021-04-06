@@ -9,6 +9,6 @@ namespace SQLRepository.Client.Models
         public int Id { get; set; }
         public string AbuserName { get; set; }
         public string Reason { get; set; }
-        public DateTime Date { get; set; } 
+        public DateTime Date { get; set; }
     }
 }

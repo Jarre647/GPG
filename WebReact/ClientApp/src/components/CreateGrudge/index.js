@@ -3,14 +3,9 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 
-import Filter from 'bad-words'
-
-const filter = new Filter();
 
 class CreateGrudge extends Component {
-    static propTypes = {
-    
-    }
+
     constructor(props) {
         super(props);
 
@@ -27,7 +22,7 @@ class CreateGrudge extends Component {
     }
 
     handleNameAbuserChange(event) {
-        const name = filter.clean(event.target.value);
+        const name = event.target.value;
         this.setState(() => {
             return {
                 name,
@@ -37,7 +32,7 @@ class CreateGrudge extends Component {
     }
 
     handleGrudgeContentChange(event) {
-        const content = filter.clean(event.target.value);
+        const content = event.target.value;
         this.setState(() => {
             return {
                 content,

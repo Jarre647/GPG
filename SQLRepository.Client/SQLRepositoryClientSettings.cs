@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace SQLRepository.Client
+﻿namespace SQLRepository.Client
 {
     public class SQLRepositoryClientSettings
     {

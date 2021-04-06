@@ -1,16 +1,11 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using SQLRepository.Client;
-using SQLRepository.Client.Contracts;
 using WebReact.Mappings;
-using WebReact.Services;
-using WebReact.Services.Contracts;
 using WebReact.Settings;
 
 namespace WebReact
@@ -33,7 +28,6 @@ namespace WebReact
             services.AddTransient(provider => settings);
             services.RegisterSQLRepositoryClient(settings.SQLRepositoryClientSettings, builder => builder);
             services.AddControllersWithViews();
-            services.AddScoped<IGrudgeService, GrudgeService>();
             services.AddAutoMapper(typeof(MappingEntityConfig));
             // In production, the React files will be served from this directory
             services.AddSpaStaticFiles(configuration =>

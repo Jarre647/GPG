@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using SQLRepository.Client.Contracts;
+﻿using SQLRepository.Client.Contracts;
 
 namespace SQLRepository.Client
 {

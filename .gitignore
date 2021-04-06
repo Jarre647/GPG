@@ -1,7 +1,7 @@
-SQL Repository/bin
+/SQLRepository/bin
 /.vs/SQL Repository/
-SQL Repository/Debug/*
-SQL Repository/obj
+/SQLRepository/Debug/*
+/SQLRepository/obj
 packages/*
 TelegramBotV2/bin/*
 TelegramBotV2/bin/Debug/*
@@ -15,3 +15,8 @@ TelegramBotV2/wwwroot/lib/
 /SQLRepository.Client/bin/
 /HttpClientGenerator/HttpClientGenerator/obj/
 /HttpClientGenerator/HttpClientGenerator/bin/
+/WebVue/obj/
+/WebVue/bin/*
+/WebVue/ClientApp/dist/
+/WebVue/ClientApp/node_modules/
+/WebVue/bin/Debug/
