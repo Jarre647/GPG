@@ -5,9 +5,19 @@ WORKDIR /app
 EXPOSE 80
 EXPOSE 443
 
+RUN apt-get update \
+    && apt-get install curl -y \
+	&& curl -sL https://deb.nodesource.com/setup_12.x | bash \
+	&& apt-get install nodejs -y \
+	&& node -v \
+	&& npm -v
+
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 WORKDIR /src
 COPY ["WebVue/WebVue.csproj", "WebVue/"]
+COPY package*.json ./
+RUN npm install
+RUN npm run build
 RUN dotnet restore "WebVue/WebVue.csproj"
 COPY . .
 WORKDIR "/src/WebVue"

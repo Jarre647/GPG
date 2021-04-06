@@ -1,24 +1,23 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using SQLRepository.Client;
+using VueCliMiddleware;
+using WebVue.Settings;
 
 namespace WebVue
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        public static AppSettings AppSettings { get; set; }
+        public IWebHostEnvironment Environment { get; }
+        public Startup(IConfiguration configuration, IWebHostEnvironment env)
         {
             Configuration = configuration;
+            Environment = env;
         }
 
         public IConfiguration Configuration { get; }
@@ -26,11 +25,15 @@ namespace WebVue
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
+            var settings = Configuration.Get<AppSettings>();
+            AppSettings = settings;
+            var test = Environment.IsDevelopment();
+            services.RegisterSQLRepositoryClient(settings.SqlRepositoryClientSettings, 
+                builder => Environment.IsDevelopment() ? builder : builder.WithAccessTokenAuthorization(services));
             services.AddControllers();
-            services.AddSwaggerGen(c =>
+            services.AddSpaStaticFiles(configuration =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebVue", Version = "v1" });
+                configuration.RootPath = "ClientApp";
             });
         }
 
@@ -40,19 +43,31 @@ namespace WebVue
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "WebVue v1"));
             }
 
             app.UseHttpsRedirection();
 
             app.UseRouting();
-
+            app.UseSpaStaticFiles();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+            });
+
+            app.UseSpa(spa =>
+            {
+                if (env.IsDevelopment())
+                    spa.Options.SourcePath = "ClientApp/";
+                else
+                    spa.Options.SourcePath = "dist/";
+
+                if (env.IsDevelopment())
+                {
+                    spa.UseVueCli(npmScript: "serve");
+                }
+
             });
         }
     }
