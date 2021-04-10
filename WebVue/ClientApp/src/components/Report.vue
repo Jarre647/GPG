@@ -12,7 +12,7 @@
 <script>
     import axios from 'axios'
     export default {
-        name: "CreateGrudge",
+        name: "Report",
         data() {
             return {
                 name: "",
