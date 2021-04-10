@@ -1,15 +1,15 @@
 <template>
-    <div class="hello">
+    <tb>
         Abusers<br />
-        <tb>
-            <tr>
-                <td>
-                    Name
-                </td>
-                <td>
-                    Reason
-                </td>
-            </tr>
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Reason
+            </th>
+        </tr>
+        <tbody>
             <tr v-for="item in grudges" :key="item.id">
                 <td>
                     {{item.abuserName}}
@@ -18,8 +18,8 @@
                     {{item.reason}}
                 </td>
             </tr>
-        </tb>
-    </div>
+        </tbody>
+    </tb>
 </template>
 
 <script>
@@ -32,4 +32,8 @@
 </script>
 
 <style scoped>
+    td{
+        padding:5px;
+        border-bottom:solid;
+    }
 </style>
