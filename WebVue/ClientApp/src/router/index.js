@@ -1,6 +1,6 @@
 ﻿import { createWebHistory, createRouter } from "vue-router";
 import Home from "@/components/Home.vue";
-import CreateGrudge from "@/components/CreateGrudge.vue"
+import Report from "@/components/Report.vue";
 
 const routes = [
     {
@@ -10,9 +10,9 @@ const routes = [
         props: true 
     },
     {
-        path: "/add",
-        name: "CreateGrudge",
-        component: CreateGrudge
+        path: "/report",
+        name: "Report",
+        component: Report
     }
 ];
 
