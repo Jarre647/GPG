@@ -14,7 +14,10 @@
                      v-bind:class="{show: isExpanded}">
                     <ul class="navbar-nav flex-grow">
                         <li class="nav-item">
-                            <router-link :to="{ name: 'Home' }" class="nav-link text-dark">Home</router-link>                           
+                            <router-link :to="{ name: 'Home' }" class="nav-link text-dark">Home</router-link>
+                        </li>
+                        <li class="nav-item">
+                            <router-link :to="{ name: 'CreateGrudge' }" class="nav-link text-dark">Report</router-link>
                         </li>
                     </ul>
                 </div>

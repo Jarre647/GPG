@@ -1,6 +1,6 @@
 <template>
     <nav-menu></nav-menu>
-    <router-view />
+    <router-view :grudges ="grudges"/>
 </template>
 
 <script>
