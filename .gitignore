@@ -20,3 +20,5 @@ TelegramBotV2/wwwroot/lib/
 /WebVue/ClientApp/dist/
 /WebVue/ClientApp/node_modules/
 /WebVue/bin/Debug/
+/AuthenticationService/AuthenticationService/bin/
+/AuthenticationService/AuthenticationService/obj/
