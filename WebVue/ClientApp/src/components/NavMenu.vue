@@ -19,6 +19,12 @@
                         <li class="nav-item">
                             <router-link :to="{ name: 'Report' }" class="nav-link text-dark">Report</router-link>
                         </li>
+                        <li class="nav-item">
+                            <router-link :to="{ name: 'Login' }" class="nav-link text-dark">Login</router-link>
+                        </li>
+                        <li class="nav-item">
+                            <router-link :to="{ name: 'Register' }" class="nav-link text-dark">Register</router-link>
+                        </li>
                     </ul>
                 </div>
             </div>

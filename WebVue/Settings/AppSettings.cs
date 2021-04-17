@@ -11,5 +11,7 @@ namespace WebVue.Settings
         public string SQLRepositoryUrl { get; set; }
 
         public SQLRepositoryClientSettings SqlRepositoryClientSettings { get; set; }
+
+        public ConnectionStrings ConnectionStrings { get; set; }
     }
 }
