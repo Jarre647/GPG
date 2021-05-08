@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using SQLRepository.Client.Contracts;
 using SQLRepository.Client.Models;
 
@@ -11,6 +12,7 @@ namespace WebVue.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class GrudgesController : ControllerBase
     {
         private readonly IGrudgeApi _grudgeApi;

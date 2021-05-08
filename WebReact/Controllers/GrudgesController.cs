@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using SQLRepository.Client.Contracts;
+using SQLRepository.Client.Models;
 
 
 namespace WebReact.Controllers
@@ -10,40 +11,32 @@ namespace WebReact.Controllers
     [ApiController]
     public class GrudgesController : ControllerBase
     {
-        private readonly IGrudgeApi _grudgesApi;
+        private readonly IGrudgeApi _grudgeApi;
 
-        public GrudgesController(IGrudgeApi grudgesApi)
+        public GrudgesController(IGrudgeApi grudgeApi)
         {
-            _grudgesApi = grudgesApi;
+            _grudgeApi = grudgeApi;
         }
 
         [HttpGet]
-        public async Task GetGrudges()
+        public async Task<IReadOnlyList<GrudgeModel>> GetGrudges()
         {
-            var test = await _grudgesApi.GetAbuserAsync();
-
-            return;
+            return await _grudgeApi.GetAbuserAsync();
         }
 
-        ////[HttpPost]
-        ////public async Task<IActionResult> AddGrudge(Grudge grudge)
-        ////{
-        ////    await _grudgesApi.PostGrudgeAsync(grudge);
-        ////    return Ok();
-        ////}
+        [HttpPost]
+        public async Task<IActionResult> PostGrudges(GrudgeModel grudge)
+        {
+            try
+            {
+                await _grudgeApi.PutGrudgeAsync(grudge);
+                return Ok();
+            }
+            catch
+            {
+                return BadRequest();
+            }
 
-        ////[HttpPut]
-        ////public async Task<IActionResult> UpdateGrudge(Grudge grudge)
-        ////{
-        ////    await _grudgesApi.PutGrudgeAsync(grudge);
-        ////    return Ok();
-        ////}
-
-        //[HttpDelete]
-        //public async Task<IActionResult> DeleteGrudge(int id)
-        //{
-        //    await _grudgesApi.DeleteGrudgeAsync(id);
-        //    return Ok();
-        //}
+        }
     }
 }
