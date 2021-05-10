@@ -2,14 +2,14 @@ import React from 'react';
 
 function ListGrudge(props) {
     return (
-        <div>       
-            <div>
+        <tr>
+            <td>
                 {props.abuserName}
-            </div>
-            <div>
+            </td>
+            <td>
                 {props.reason}
-            </div>               
-        </div>
+            </td>
+        </tr>
     )
 }
 

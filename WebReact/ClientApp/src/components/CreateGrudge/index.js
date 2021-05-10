@@ -5,7 +5,9 @@ import PropTypes from 'prop-types';
 
 
 class CreateGrudge extends Component {
+    static propTypes = {
 
+    }
     constructor(props) {
         super(props);
 
@@ -13,12 +15,12 @@ class CreateGrudge extends Component {
             content: '',
             name: '',
             validContent: false,
-            validName: false,
+            validName: false
         }
 
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleGrudgeContentChange = this.handleGrudgeContentChange.bind(this);
-        this.handleNameAbuserChange = this.handleNameAbuserChange.bind(this); 
+        this.handleNameAbuserChange = this.handleNameAbuserChange.bind(this);
     }
 
     handleNameAbuserChange(event) {
@@ -42,33 +44,37 @@ class CreateGrudge extends Component {
     }
 
 
-    handleSubmit(){
+    handleSubmit() {
         if (!this.state.validContent && !this.state.validName) return;
         axios
-            .post("https://localhost:5001/api/grudges", {
-            AbuserName: this.state.name,
-            Reason: this.state.content
-        })
-        .then(function(response) {
-            console.log(response)
-        })
+            .post("/api/grudges",
+                {
+                    AbuserName: this.state.name,
+                    Reason: this.state.content
+                })
+            .then(function(response) {
+                console.log(response);
+            });
     }
 
     render() {
-        return(
+        return (
             <div>
-                <input 
+                <input
                     value={this.state.name}
                     onChange={this.handleNameAbuserChange}
                     placeholder="name"
                 />
-                <textarea 
+
+                <textarea
                     value={this.state.content}
                     onChange={this.handleGrudgeContentChange}
                     placeholder="What's happened?"
                 />
-               <button onClick={this.handleSubmit}>Post</button>
+
+                <button onClick={this.handleSubmit}>Post</button>
             </div>
+
         );
     }
 }

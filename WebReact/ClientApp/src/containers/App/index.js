@@ -5,21 +5,23 @@ import CreateGrudge from '../../components/CreateGrudge'
 //import Map from '../../components/Map'
 import axios from 'axios';
 
-function App(){
+function App() {
     const [grudges, setGrudges] = useState([]);
     useEffect(() => {
         axios
-            .get("https://localhost:5001/api/grudges")
-        .then(res => setGrudges(res.data))
+            .get("/api/grudges")
+            .then(res => setGrudges(res.data))
     }, []);
-    
-    return(
+
+    return (
         <Fragment>
             <p>Поиск по имени</p>
-            <input></input>
-            {grudges.map((grudge) => <ListGrudge abuserName={grudge.abuserName}
-                                                 reason={grudge.reason}/> ) }     
-            <CreateGrudge/>  
+            <input/>
+            <tr>
+                {grudges.map((grudge) => <ListGrudge abuserName={grudge.abuserName}
+                    reason={grudge.reason} />)}
+            </tr>
+            <CreateGrudge />
         </Fragment>
     )
 }
